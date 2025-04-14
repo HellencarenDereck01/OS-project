@@ -51,10 +51,14 @@ public:
     }
 
     void showPageTable() {
-        cout << "\nCurrent Page Table:\n";
-        for (auto entry : pageTable) {
-            cout << "Page " << entry.first << " -> Frame " << entry.second << "\n";
-        }
+        cout << "\nPAGE TABLE:\n"; //  Updated heading
+    cout << "------------------------\n"; //  Formatting
+    cout << "Page\t|\tFrame\n";           // Table headers
+    cout << "------------------------\n";
+    for (auto entry : pageTable) {
+        cout << entry.first << "\t|\t" << entry.second << "\n"; //  Table rows
+    }
+    cout << "------------------------\n";
     }
 };
 
