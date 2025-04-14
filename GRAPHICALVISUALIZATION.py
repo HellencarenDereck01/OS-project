@@ -3,10 +3,10 @@ import numpy as np
 
 MAX_FRAMES = 3
 
-def visualize_memory(frames):
+def visualize_memory(frames,colors):
     # Creating a bar plot to visualize memory frames
     plt.clf()  # Clear previous plot
-    plt.bar(range(MAX_FRAMES), frames, color='skyblue')
+    plt.bar(range(MAX_FRAMES), frames, color=colors)
     plt.ylim(0, 5)  # Adjust the Y-axis limit to fit frame size
     plt.xticks(range(MAX_FRAMES), ['Frame 1', 'Frame 2', 'Frame 3'])
     plt.yticks(np.arange(0, 6, 1))
@@ -22,13 +22,14 @@ def fifo_page_replacement(pages):
 
     for page in pages:
         if page not in frames:
-            # Replace page using FIFO
-            frames[index] = page
-            index = (index + 1) % MAX_FRAMES
-            page_faults += 1
-        
-        # Visualize memory usage after each page reference
-        visualize_memory(frames)
+        frames[index] = page
+        index = (index + 1) % MAX_FRAMES
+        page_faults += 1
+        colors = ['red'] * MAX_FRAMES  # Red = Page Fault
+    else:
+        colors = ['green'] * MAX_FRAMES  # Green = Page Hit
+
+    visualize_memory(frames, colors)
     
     return page_faults
 
