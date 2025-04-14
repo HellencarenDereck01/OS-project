@@ -58,7 +58,7 @@ def visualize():
         canvas.draw()
         canvas.get_tk_widget().pack()
 
-        label_result.config(text=f"Total Page Faults: {total_faults}")
+        label_result.config(text=f"Total Page Faults: {total_faults}",fg="darkred", font=("Arial", 12, "bold"))
 
     except Exception as e:
         messagebox.showerror("Input Error", f"Error: {e}")
