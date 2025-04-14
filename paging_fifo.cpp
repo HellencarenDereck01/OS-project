@@ -9,6 +9,8 @@ class PagingFIFO {
     queue<int> pageQueue; // To store pages in FIFO order
     unordered_set<int> pagesInMemory; // To check if page is already loaded
     int pageFaults;
+    int pageHits = 0;
+
 
 public:
     PagingFIFO(int cap) : capacity(cap), pageFaults(0) {}
@@ -28,6 +30,7 @@ public:
             pagesInMemory.insert(pageNumber);
             cout << "Loaded Page: " << pageNumber << " (Page Fault!)\n";
         } else {
+            pageHits++;
             cout << "Accessed Page: " << pageNumber << " (No Fault)\n";
         }
     }
@@ -44,6 +47,7 @@ public:
 
     void displayPageFaults() {
         cout << "Total Page Faults: " << pageFaults << endl;
+        cout << "Total Page Hits: " << pageHits << endl;
     }
 };
 
