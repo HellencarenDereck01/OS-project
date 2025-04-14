@@ -24,7 +24,14 @@ int main() {
         cout << "Limit (size): ";
         cin >> segments[i].limit;
     }
-
+      cout << "\nSEGMENT TABLE:\n";
+    cout << "----------------------------------------\n";
+    cout << "Name\t|\tBase\t|\tLimit\n";
+    cout << "----------------------------------------\n";
+    for (int i = 0; i < n; i++) {
+        cout << segments[i].name << "\t|\t" << segments[i].base << "\t|\t" << segments[i].limit << "\n";
+    }
+    cout << "----------------------------------------\n";
     char cont = 'y';
     while (cont == 'y' || cont == 'Y') {
         string name;
@@ -41,16 +48,16 @@ int main() {
                 found = true;
                 if (offset < segments[i].limit) {
                     int physicalAddress = segments[i].base + offset;
-                    cout << "✅ Access Granted. Physical Address: " << physicalAddress << "\n";
+                    cout << " Access Granted. Physical Address: " << physicalAddress << "\n";
                 } else {
-                    cout << "❌ Segmentation Fault: Offset exceeds limit.\n";
+                    cout << " Segmentation Fault: Offset exceeds limit.\n";
                 }
                 break;
             }
         }
 
         if (!found) {
-            cout << "❌ Segment not found.\n";
+            cout << " Segment not found.\n";
         }
 
         cout << "\nDo you want to access another segment? (y/n): ";
