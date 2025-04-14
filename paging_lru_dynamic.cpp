@@ -24,6 +24,7 @@ int main() {
     list<int> lruList;
 
     int pageFaults = 0;
+    int pageHits = 0;
 
     for (int i = 0; i < n; ++i) {
         int page = pages[i];
@@ -45,6 +46,8 @@ int main() {
             memory.insert(page);
         } else {
             // Page hit, remove old usage
+            pageHits++; //  Count page hit
+            cout << " (Page Hit!)"; 
             lruList.erase(positions[page]);
         }
 
@@ -60,6 +63,7 @@ int main() {
     }
 
     cout << "Total Page Faults (LRU): " << pageFaults << endl;
+    cout << "Total Page Hits (LRU): " << pageHits << endl;
 
     return 0;
 }
