@@ -3,6 +3,8 @@ import psutil
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib.animation as animation
+import datetime
+
 
 # Global data store for memory values
 memory_percent = []
@@ -29,6 +31,8 @@ canvas.get_tk_widget().pack()
 # Function to update the plot every second
 def update(frame):
     mem = psutil.virtual_memory()
+    print(f"[{datetime.datetime.now().strftime('%H:%M:%S')}] Memory Usage: {mem.percent}%")
+
     memory_percent.append(mem.percent)
     time_ticks.append(frame)
 
